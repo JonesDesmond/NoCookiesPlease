@@ -1,0 +1,9 @@
+{
+  "name": "nocookiesplease",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local-only browser extension that auto-rejects cookie-consent banners and 'legitimate interest' toggles. No dependencies.",
+  "scripts": {
+    "test": "node test/matcher.test.js && node test/manifest.test.js && node test/content.smoke.test.js reject && node test/content.smoke.test.js toggles && node test/content.smoke.test.js prompt"
+  }
+}

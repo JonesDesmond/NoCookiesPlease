@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "NoCookiesPlease",
+  "version": "1.0.0",
+  "description": "Automatically rejects cookie-consent banners and 'legitimate interest' toggles on every website. Fully local: no data is stored, sent, or shared.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "NoCookiesPlease",
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": ["declarativeNetRequest"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/labels.js", "src/matcher.js", "src/content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "nocookiesplease@jonesdesmond.github",
+      "strict_min_version": "121.0"
+    }
+  }
+}
